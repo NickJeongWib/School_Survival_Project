@@ -28,12 +28,19 @@ public class SkillData : ScriptableObject
         Skill_Trap,
         Skill_ArrowRain,
         Skill_BombArrow,
+
+        /** 패시브 스킬 */
+        Skill_CriticalUp,
+        Skill_CriticalDamageUp,
+        Skill_HpUp,
+        Skill_SkillDamageUp,
     }
 
     [Header("# Main Info")]
     public SkillType skillType;
     public int Skill_Id;
     public string Skill_Name;
+
     [TextArea]
     public string Skill_Desc;
     public Sprite Skill_Icon;
@@ -42,6 +49,7 @@ public class SkillData : ScriptableObject
     public float baseDamage;
     public int baseCount;
     public float[] damages;
+    public float[] UpRate;
     public int[] counts;
     public float SkillSpeed;
 

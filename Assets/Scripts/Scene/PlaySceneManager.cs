@@ -28,6 +28,12 @@ public class PlaySceneManager : MonoBehaviour
     public GameObject ConfigPanel;
     public LevelUp WizardLevelUp;
 
+    /** 패시브 스킬 증가 비율 저장 */
+    [Header("-----PassiveSkillUpRate-----")]
+    public float PassiveCriticalUpRate;
+    public float PassiveCriticalDamageUpRate;
+    public float PassiveSkillDamageUpRate;
+
     [Header("---GainMagicStoneText---")]
     public Text GameClearMagicStoneTxt;
     public Text GameOverMagicStoneTxt;
@@ -124,8 +130,15 @@ public class PlaySceneManager : MonoBehaviour
         /** 입장 시 플레이어 이동속도 저장 */
         BasePlayerSpeed = GameManager.GMInstance.PlayerSpeed;
 
+        /** 초기화 플레이화면 진입시 BaseHp 최대체력으로 초기화 */
+        GameManager.GMInstance.BaseHp = GameManager.GMInstance.MaxHealth;
+        /** 초기화 플레이화면 진입시 PassiveSkillDamageTotal 0으로 초기화 */
+        PassiveSkillDamageUpRate = 0;
+
         /** 처음 시작하는지 확인하기 위한 변수 */
         bIsFirstStart = true;
+
+        GameManager.GMInstance.CoinManagerRef.JsonSave();
     }
 
     void Update()
@@ -466,4 +479,34 @@ public class PlaySceneManager : MonoBehaviour
         StartCacPos = new Vector3(a_Pos.x, a_Pos.y, 0.0f);
         a_DmgClone.transform.position = StartCacPos;
     }
+
+    // public float PassiveCriticalUpRate;
+    // public float PassiveCriticalDamageUpRate;
+
+    /** 패시브 스킬 반환 */
+    #region PassiveSkillSetting
+    
+    public float GetPassiveCriticalUpRate()
+    {
+        return PassiveCriticalUpRate;
+    }
+
+    public void SetPassiveCriticalUpRate(float value)
+    {
+        /** value값 만큼 증가 */
+        PassiveCriticalUpRate += value;
+    }
+
+    public float GetPassiveCriticalDamageUpRate()
+    {
+        return PassiveCriticalDamageUpRate;
+    }
+
+    public void SetPassiveCriticalDamageUpRate(float value)
+    {
+        /** value값 만큼 증가 */
+        PassiveCriticalDamageUpRate += value;
+    }
+
+    #endregion
 }

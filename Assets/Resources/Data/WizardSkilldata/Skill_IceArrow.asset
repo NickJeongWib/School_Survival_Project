@@ -16,7 +16,7 @@ MonoBehaviour:
   Skill_Id: 9
   Skill_Name: "\uC544\uC774\uC2A4\uC5D0\uB85C\uC6B0"
   Skill_Desc: "\uB370\uBBF8\uC9C0\n{0}% \uC99D\uAC00\n"
-  Skill_Icon: {fileID: 21300000, guid: f897030d4ac794341b788bd49d4999cc, type: 3}
+  Skill_Icon: {fileID: 21300000, guid: 6e34878e43d7888408df39d3f81a9c6a, type: 3}
   baseDamage: 30
   baseCount: 0
   damages:
@@ -40,6 +40,7 @@ MonoBehaviour:
   - 1.3
   - 1.3
   - 1.3
+  UpRate: []
   counts: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   SkillSpeed: 1
   projectile: {fileID: 1245952862639789250, guid: fb0299fc69e68a3408f0364151d23a3a,

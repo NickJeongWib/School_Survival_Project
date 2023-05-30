@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 6
   Skill_Id: 6
-  Skill_Name: "\uC544\uC774\uC2A4\uC5D0\uC774\uC9C0"
+  Skill_Name: "\uC544\uC774\uC2A4 \uC5D0\uC774\uC9C0"
   Skill_Desc: "\uB370\uBBF8\uC9C0\n{0}% \uC99D\uAC00\n\uC9C0\uC18D\uC2DC\uAC04\n{1}\uCD08"
   Skill_Icon: {fileID: -359789354, guid: a1b8af7031a01fb4cbeb142ff8ef07f8, type: 3}
   baseDamage: 20
@@ -40,6 +40,7 @@ MonoBehaviour:
   - 1.1
   - 1.1
   - 1.1
+  UpRate: []
   counts: 0100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   SkillSpeed: 0
   projectile: {fileID: 0}

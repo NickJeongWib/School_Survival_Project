@@ -367,7 +367,7 @@ public class LobbySceneManager : MonoBehaviour
     public void OnClickEnterGrassLand()
     {
         /** 티켓이 0이면 return */
-        if (GameManager.GMInstance.EnterTicket == 0)
+        if (GameManager.GMInstance.EnterTicket <= 0)
         {
             return;
         }
@@ -381,7 +381,7 @@ public class LobbySceneManager : MonoBehaviour
         /** 티켓 1감소 */
         GameManager.GMInstance.EnterTicket--;
 
-        GameManager.GMInstance.CoinManagerRef.JsonSave();
+        // GameManager.GMInstance.CoinManagerRef.JsonSave();
 
         SceneManager.LoadScene("PlayScene");
     }
@@ -389,7 +389,7 @@ public class LobbySceneManager : MonoBehaviour
     public void OnClickEnterRockLand()
     {
         /** 티켓이 0이면 return */
-        if (GameManager.GMInstance.EnterTicket == 0)
+        if (GameManager.GMInstance.EnterTicket <= 0)
         {
             return;
         }
@@ -403,7 +403,7 @@ public class LobbySceneManager : MonoBehaviour
         /** 티켓 1감소 */
         GameManager.GMInstance.EnterTicket--;
 
-        GameManager.GMInstance.CoinManagerRef.JsonSave();
+        // GameManager.GMInstance.CoinManagerRef.JsonSave();
 
         SceneManager.LoadScene("PlayScene");
     }
@@ -411,7 +411,7 @@ public class LobbySceneManager : MonoBehaviour
     public void OnClickEnterDeathLand()
     {
         /** 티켓이 0이면 return */
-        if (GameManager.GMInstance.EnterTicket == 0)
+        if (GameManager.GMInstance.EnterTicket <= 0)
         {
             return;
         }
@@ -425,7 +425,7 @@ public class LobbySceneManager : MonoBehaviour
         /** 티켓 1감소 */
         GameManager.GMInstance.EnterTicket--;
 
-        GameManager.GMInstance.CoinManagerRef.JsonSave();
+        // GameManager.GMInstance.CoinManagerRef.JsonSave();
 
         SceneManager.LoadScene("PlayScene");
     }

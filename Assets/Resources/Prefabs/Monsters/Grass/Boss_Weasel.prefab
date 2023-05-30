@@ -159,10 +159,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  bIsLive: 1
   CurrentMonsterType: 0
   PlayerFind: {fileID: 0}
+  Potion: {fileID: 0}
   CurrentMonsterHp: 20
-  MonsterMaxHp: 20
+  MonsterMaxHp: 2000
+  PotionDropPercent: 0
 --- !u!114 &8915779844478252519
 MonoBehaviour:
   m_ObjectHideFlags: 0

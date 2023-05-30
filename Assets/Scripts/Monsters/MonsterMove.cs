@@ -177,20 +177,21 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
-            // Debug.Log(Crtical);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
+            Debug.Log(Crtical);
 
             /** TODO ## MonsterMove.cs 크리티컬 적용 공식 */
-            /** 파이어볼 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float FireBallCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetFireBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
+            /** 파이어볼 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 패시브 스킬 데미지 증가) + 기존 데미지) */
+            float FireBallCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetFireBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
             /** 파이어볼 일반 공격 데미지 계산식*/
-            float FireBallNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetFireBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
+            float FireBallNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetFireBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
 
             Vector3 NowPos = transform.position;
 
             /** TODO ## MonsterMove.cs 크리티컬 적용 공식 */
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 크리티컬 데미지 피해 */
                 GetDamage(FireBallCriticalDamage);
@@ -256,18 +257,19 @@ public class MonsterMove : MonoBehaviour
             sprite.color = Color.red;
             Invoke("OnDamage", 0.2f);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 아이스에로우 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float IceArrowCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetIceArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
+            /** 아이스에로우 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float IceArrowCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetIceArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
             /** 아이스에로우 일반 공격 데미지 계산식*/
-            float IceArrowNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetIceArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
+            float IceArrowNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetIceArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 GetDamage(IceArrowCriticalDamage);
 
@@ -329,19 +331,20 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 전기구체 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float ElectricBallCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetElectricBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
+            /** 전기구체 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float ElectricBallCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetElectricBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
             /** 전기구체 일반 공격 데미지 계산식*/
-            float ElectricBallNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetElectricBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
+            float ElectricBallNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetElectricBallBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
 
             Vector3 NowPos = transform.position;
 
             /** TODO ## MonsterMove.cs 크리티컬 적용 공식 */
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 GetDamage(ElectricBallCriticalDamage);
 
@@ -402,19 +405,20 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 메테오 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float MateoCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetMateoBaseDamage()) + GameManager.GMInstance.SkillManagerRef.MateoDamage);
+            /** 메테오 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float MateoCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetMateoBaseDamage()) + GameManager.GMInstance.SkillManagerRef.MateoDamage);
             /** 메테오 일반 공격 데미지 계산식*/
-            float MateoNormalDamage = GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetMateoBaseDamage() + GameManager.GMInstance.SkillManagerRef.MateoDamage;
+            float MateoNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetMateoBaseDamage() + GameManager.GMInstance.SkillManagerRef.MateoDamage;
 
             Vector3 NowPos = transform.position;
 
             /** TODO ## MonsterMove.cs 크리티컬 적용 공식 */
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {               
                 GetDamage(MateoCriticalDamage);
 
@@ -472,18 +476,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 낙뢰 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float LightningCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetLightningBaseDamage()) + GameManager.GMInstance.SkillManagerRef.LightningDamage);
+            /** 낙뢰 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float LightningCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetLightningBaseDamage()) + GameManager.GMInstance.SkillManagerRef.LightningDamage);
             /** 낙뢰 일반 공격 데미지 계산식*/
-            float LightningNormalDamage = GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetLightningBaseDamage() + GameManager.GMInstance.SkillManagerRef.LightningDamage;
+            float LightningNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetLightningBaseDamage() + GameManager.GMInstance.SkillManagerRef.LightningDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 낙뢰 크리티컬 데미지 */
                 GetDamage(LightningCriticalDamage);
@@ -541,18 +546,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 토네이토 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float TornadoCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetTornadoBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TornadoDamage);
+            /** 토네이토 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float TornadoCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetTornadoBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TornadoDamage);
             /** 토네이도 일반 공격 데미지 계산식*/
-            float TornadoNormalDamage = GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetTornadoBaseDamage() + GameManager.GMInstance.SkillManagerRef.TornadoDamage;
+            float TornadoNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetTornadoBaseDamage() + GameManager.GMInstance.SkillManagerRef.TornadoDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 토네이도 크리티컬 데미지 */
                 GetDamage(TornadoCriticalDamage);
@@ -610,18 +616,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 아이스에이지 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float IceAgeCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetIceAgeBaseDamage()) + GameManager.GMInstance.SkillManagerRef.IceAgeDamage);
+            /** 아이스에이지 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float IceAgeCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetIceAgeBaseDamage()) + GameManager.GMInstance.SkillManagerRef.IceAgeDamage);
             /** 아이스에이지 일반 공격 데미지 계산식*/
-            float IceAgeNormalDamage = GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetIceAgeBaseDamage() + GameManager.GMInstance.SkillManagerRef.IceAgeDamage;
+            float IceAgeNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetIceAgeBaseDamage() + GameManager.GMInstance.SkillManagerRef.IceAgeDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 아이스에이지 크리티컬 데미지 */
                 GetDamage(IceAgeCriticalDamage);
@@ -682,18 +689,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 화살 공격 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float ArrowCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
+            /** 화살 공격 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float ArrowCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
             /** 화살 공격 일반 공격 데미지 계산식*/
-            float ArrowNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetArrowBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
+            float ArrowNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetArrowBaseDamage() + collision.GetComponent<Bullet>().m_Damage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 화살 공격 크리티컬 데미지 */
                 GetDamage(ArrowCriticalDamage);
@@ -751,18 +759,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 볼텍스에 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float VortexCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetVortexBaseDamage()) + GameManager.GMInstance.SkillManagerRef.VortexDamage);
+            /** 볼텍스에 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float VortexCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetVortexBaseDamage()) + GameManager.GMInstance.SkillManagerRef.VortexDamage);
             /** 볼텍스에 일반 공격 데미지 계산식*/
-            float VortexNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetVortexBaseDamage()) + GameManager.GMInstance.SkillManagerRef.VortexDamage;
+            float VortexNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetVortexBaseDamage()) + GameManager.GMInstance.SkillManagerRef.VortexDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 볼텍스 크리티컬 데미지 */
                 GetDamage(VortexCriticalDamage);
@@ -820,19 +829,20 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
             /** TODO ## MonsterMove.cs 크리티컬 적용 공식 */
-            /** 파이어볼 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float HuricaneCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetHuricaneBaseDamage()) + GameManager.GMInstance.SkillManagerRef.HuricaneDamage);
+            /** 파이어볼 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float HuricaneCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetHuricaneBaseDamage()) + GameManager.GMInstance.SkillManagerRef.HuricaneDamage);
             /** 파이어볼 일반 공격 데미지 계산식*/
-            float HuricaneNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetHuricaneBaseDamage()) + GameManager.GMInstance.SkillManagerRef.HuricaneDamage;
+            float HuricaneNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetHuricaneBaseDamage()) + GameManager.GMInstance.SkillManagerRef.HuricaneDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 허리케인 크리티컬 데미지 */
                 GetDamage(HuricaneCriticalDamage);
@@ -889,18 +899,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 바람정령 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float WindSpiritCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetWindSpiritBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
+            /** 바람정령 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float WindSpiritCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetWindSpiritBaseDamage()) + collision.GetComponent<Bullet>().m_Damage);
             /** 바람정령 일반 공격 데미지 계산식*/
-            float WindSpiritNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetWindSpiritBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
+            float WindSpiritNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetWindSpiritBaseDamage()) + collision.GetComponent<Bullet>().m_Damage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티커 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 바람정령 크리티컬 데미지 */
                 GetDamage(WindSpiritCriticalDamage);
@@ -958,18 +969,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 트랩폭발에 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float TrapCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetTrapBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TrapDamage);
+            /** 트랩폭발에 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float TrapCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetTrapBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TrapDamage);
             /** 트랩폭발에 일반 공격 데미지 계산식*/
-            float TrapNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetTrapBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TrapDamage;
+            float TrapNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetTrapBaseDamage()) + GameManager.GMInstance.SkillManagerRef.TrapDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티컬 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 트랩 폭발 크리티컬 데미지 */
                 GetDamage(TrapCriticalDamage);
@@ -1028,18 +1040,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 화살 비 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float ArrowRainCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetArrowRainBaseDamage()) + GameManager.GMInstance.SkillManagerRef.ArrowRainDamage);
+            /** 화살 비 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float ArrowRainCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetArrowRainBaseDamage()) + GameManager.GMInstance.SkillManagerRef.ArrowRainDamage);
             /** 화살 비 일반 공격 데미지 계산식*/
-            float ArrowRainNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetArrowRainBaseDamage()) + GameManager.GMInstance.SkillManagerRef.ArrowRainDamage;
+            float ArrowRainNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetArrowRainBaseDamage()) + GameManager.GMInstance.SkillManagerRef.ArrowRainDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티컬 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 화살 비 크리티컬 데미지 */
                 GetDamage(ArrowRainCriticalDamage);
@@ -1097,18 +1110,19 @@ public class MonsterMove : MonoBehaviour
             /** 피격 효과음 재생 */
             GameManager.GMInstance.SoundManagerRef.PlaySFX(SoundManager.SFX.Hit);
 
-            float Crtical = 100.0f * Random.Range(0.0f, 1.0f);
+            /** 크리티컬 확률 계산 */
+            float Crtical = 100.0f * (Random.Range(0.0f, 1.0f));
             // Debug.Log(Crtical);
 
-            /** 화살 공격 크리티컬 데미지 계산식 (크리티컬 데미지 * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
-            float BombArrowCriticalDamage = GameManager.GMInstance.GetCriticalDamage() * ((GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetBombArrowBaseDamage()) + GameManager.GMInstance.SkillManagerRef.BombArrowDamage);
+            /** 화살 공격 크리티컬 데미지 계산식 (기본 크리티컬 데미지 + 패시브 스킬로 증가한 크리티컬 데미지) * (능력치 증가로 인한 데미지 증가 + 기존 데미지) */
+            float BombArrowCriticalDamage = (GameManager.GMInstance.GetCriticalDamage() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalDamageUpRate()) * (((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetBombArrowBaseDamage()) + GameManager.GMInstance.SkillManagerRef.BombArrowDamage);
             /** 화살 공격 일반 공격 데미지 계산식*/
-            float BombArrowNormalDamage = (GameManager.GMInstance.GetSkillDamageUp() * GameManager.GMInstance.GetBombArrowBaseDamage()) + GameManager.GMInstance.SkillManagerRef.BombArrowDamage;
+            float BombArrowNormalDamage = ((GameManager.GMInstance.GetSkillDamageUp() + GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate) * GameManager.GMInstance.GetBombArrowBaseDamage()) + GameManager.GMInstance.SkillManagerRef.BombArrowDamage;
 
             Vector3 NowPos = transform.position;
 
             /** 크리티컬 확률 적용 되었다면 */
-            if (Crtical <= 100.0f * GameManager.GMInstance.GetCriticalPercent())
+            if (Crtical <= 100.0f * (GameManager.GMInstance.GetCriticalPercent() + GameManager.GMInstance.PlaySceneManagerRef.GetPassiveCriticalUpRate()))
             {
                 /** 폭발화살 크리티컬 데미지 */
                 GetDamage(BombArrowCriticalDamage);
@@ -1238,14 +1252,14 @@ public class MonsterMove : MonoBehaviour
             GameManager.GMInstance.SpawnerRef.SetIsBossSpawn(false);
             // Debug.Log(1);
 
-            StartCoroutine(WaitGameClear());
-            GameManager.GMInstance.PlaySceneManagerRef.GameClear();
+            Invoke("WaitGameClear", 2.0f);
+            // GameManager.GMInstance.PlaySceneManagerRef.GameClear();
         }
     }
 
-    IEnumerator WaitGameClear()
+    void WaitGameClear()
     {
-        yield return 1.5f;
+        GameManager.GMInstance.PlaySceneManagerRef.GameClear();
     }
 
     void MakePotion()

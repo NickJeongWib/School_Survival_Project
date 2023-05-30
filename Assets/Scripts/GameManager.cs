@@ -32,6 +32,7 @@ namespace My
         public int EnterTicket;
 
         [Header("-----PlayerData-----")]
+        public float BaseHp;
         public float PlayerSpeed;
         float BasePlayerSpeed;
         public float DashSpeed;
@@ -96,7 +97,7 @@ namespace My
         public int CharCriticalPerLevel = 1;
         public int CharCriticalDamageLevel = 1;
 
-        /** public 제거 가능 */
+        /** 마법사 기본 데미지 저장 (public 제거 가능) */
         [Header("-----WizardSkillBaseDamage-----")]
         float FireBallBaseDamage;
         float ElectricBallBaseDamage;
@@ -106,7 +107,7 @@ namespace My
         float TornadoBaseDamage;
         float LightningBaseDamage;
 
-        /** public 제거 가능 */
+        /** 궁수 기본 데미지 저장 (public 제거 가능) */
         [Header("-----AcherSkillBaseDamage-----")]
         public float ArrowBaseDamage;
         public float VortexBaseDamage;

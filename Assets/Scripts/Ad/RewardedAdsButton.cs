@@ -91,7 +91,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
                 /** 입장권 1 추가 */
                 GameManager.GMInstance.EnterTicket++;
                 /** 입장권 텍스트 수량 초기화 */
-                GameManager.GMInstance.LobbySceneManagerRef.EnterTicketText.text = GameManager.GMInstance.EnterTicket.ToString();
+                GameManager.GMInstance.LobbySceneManagerRef.EnterTicketText.text = "x " + GameManager.GMInstance.EnterTicket.ToString();
+
                 GameManager.GMInstance.CoinManagerRef.JsonSave();
             }
             else if (gameObject.name == "AdsSkillSelectBtn")

@@ -111,15 +111,14 @@ public class AcherLevelUp : MonoBehaviour
             /** 만약 랜덤으로 뽑은 스킬의 레벨이 최대레벨이라면? */
             if (ranSkill.level == ranSkill.data.damages.Length)
             {
+                /** 만렙인 스킬 비활성화 */
+                ranSkill.gameObject.SetActive(false);
+
                 /** 무한 반복 */
                 while (true)
                 {
                     /** 랜덤 값 적용 */
                     int randomIndex = Random.Range(0, skills.Length);
-
-                    /** 만렙인 스킬 비활성화 */
-                    ranSkill.gameObject.SetActive(false);
-
                     /** 만렙인 스킬이 랜덤으로 뽑은 스킬과 같지않고 활성화가 되있지 않다면 */
                     if (ranSkill != skills[randomIndex] && skills[randomIndex].gameObject.activeSelf == false)
                     {

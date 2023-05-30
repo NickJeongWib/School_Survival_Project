@@ -86,7 +86,7 @@ public class AcherSkill : MonoBehaviour
                 }
                 else
                 {
-                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level]);
+                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
                 }
                 // textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
 
@@ -100,7 +100,7 @@ public class AcherSkill : MonoBehaviour
                 }
                 else
                 {
-                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level]);
+                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
                 }
                 // textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
                 break;
@@ -113,7 +113,7 @@ public class AcherSkill : MonoBehaviour
                 }
                 else
                 {
-                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level]);
+                    textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
                 }
                 // textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
                 break;
@@ -150,6 +150,41 @@ public class AcherSkill : MonoBehaviour
             case SkillData.SkillType.Skill_CharSpeedUp:
                 /** 스킬 설명을 밑과 같이 적용함 */
                 textDesc.text = string.Format(data.Skill_Desc, data.damages[level] * 100);
+                break;
+
+            /** 크리티컬 확률 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_CriticalUp:
+
+                textName.text = "크리티컬 확률\n증가";
+                /** 스킬 설명을 밑과 같이 적용함 */
+                textDesc.text = string.Format(data.Skill_Desc, data.UpRate[level] * 100);
+                break;
+
+            /** 크리티컬 데미지 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_CriticalDamageUp:
+
+                textName.text = "크리티컬 데미지\n증가";
+
+                /** 스킬 설명을 밑과 같이 적용함 */
+                textDesc.text = string.Format(data.Skill_Desc, data.UpRate[level] * 100);
+                break;
+
+            /** 최대 체력 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_HpUp:
+
+                textName.text = "최대 체력\n증가";
+
+                /** 스킬 설명을 밑과 같이 적용함 */
+                textDesc.text = string.Format(data.Skill_Desc, data.UpRate[level] * 100);
+                break;
+
+            /** 스킬 데미지 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_SkillDamageUp:
+
+                textName.text = "스킬 데미지\n증가";
+
+                /** 스킬 설명을 밑과 같이 적용함 */
+                textDesc.text = string.Format(data.Skill_Desc, data.UpRate[level] * 100);
                 break;
 
             default:
@@ -441,6 +476,57 @@ public class AcherSkill : MonoBehaviour
                 }
                 /** 게임을 실행시킨다. */
                 GameManager.GMInstance.bIsLive = true;
+                level++;
+                break;
+
+            /** 크리티컬 확률을 선택했을 때 */
+            case SkillData.SkillType.Skill_CriticalUp:
+                /** 크리티컬 레벨에 따라 확률 증가 */
+                float CriticalUpRate = data.UpRate[level];
+                /** 플레이씬 매니저에 크리티컬 증가값을 넘겨준다. */
+                GameManager.GMInstance.PlaySceneManagerRef.SetPassiveCriticalUpRate(CriticalUpRate);
+
+                /** 게임을 실행시킨다. */
+                GameManager.GMInstance.bIsLive = true;
+                /** 스킬레벨 증가 */
+                level++;
+                break;
+
+            /** 크리티컬 데미지 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_CriticalDamageUp:
+
+                /** 크리티컬 데미지 증가 레벨에 따라 확률 증가 */
+                float CriticalDamageUpRate = data.UpRate[level];
+                /** 플레이씬 매니저에 크리티컬 데미지 증가값을 넘겨준다. */
+                GameManager.GMInstance.PlaySceneManagerRef.SetPassiveCriticalDamageUpRate(CriticalDamageUpRate);
+
+                /** 게임을 실행시킨다. */
+                GameManager.GMInstance.bIsLive = true;
+                /** 스킬레벨 증가 */
+                level++;
+                break;
+
+            /** 최대 체력 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_HpUp:
+                /** 최대 체력 10퍼 증가 */
+                GameManager.GMInstance.MaxHealth += GameManager.GMInstance.BaseHp * data.UpRate[level];
+                /** 늘어난 체력만큼 현재 체력 보충 */
+                GameManager.GMInstance.Health += GameManager.GMInstance.BaseHp * data.UpRate[level];
+
+                /** 게임을 실행시킨다. */
+                GameManager.GMInstance.bIsLive = true;
+                /** 스킬레벨 증가 */
+                level++;
+                break;
+
+            /** 스킬 데미지 증가를 선택했을 때 */
+            case SkillData.SkillType.Skill_SkillDamageUp:
+
+                GameManager.GMInstance.PlaySceneManagerRef.PassiveSkillDamageUpRate += data.UpRate[level];
+              
+                /** 게임을 실행시킨다. */
+                GameManager.GMInstance.bIsLive = true;
+                /** 스킬레벨 증가 */
                 level++;
                 break;
 
