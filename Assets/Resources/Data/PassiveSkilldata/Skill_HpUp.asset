@@ -16,7 +16,7 @@ MonoBehaviour:
   Skill_Id: 19
   Skill_Name: "\uCD5C\uB300 \uCCB4\uB825 \uC99D\uAC00"
   Skill_Desc: "\uCD5C\uB300 \uCCB4\uB825\n{0}% \uC99D\uAC00"
-  Skill_Icon: {fileID: 927338625, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  Skill_Icon: {fileID: 21300000, guid: 4656c5abc0759f245af08e746a223802, type: 3}
   baseDamage: 0
   baseCount: 0
   damages:
