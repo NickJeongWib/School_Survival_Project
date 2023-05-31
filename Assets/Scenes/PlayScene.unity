@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  GameOverRemainTime: {fileID: 0}
   mySlider: {fileID: 0}
 --- !u!114 &1102786
 MonoBehaviour:
@@ -6444,7 +6445,7 @@ GameObject:
   - component: {fileID: 149851112}
   - component: {fileID: 149851111}
   m_Layer: 5
-  m_Name: GetGoldTextBg (1)
+  m_Name: RemainTimeTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10191,6 +10192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  GameOverRemainTime: {fileID: 0}
   mySlider: {fileID: 0}
 --- !u!114 &428822526
 MonoBehaviour:
@@ -23807,7 +23809,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0 G
+  m_Text: 00:00
 --- !u!222 &890752078
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26608,6 +26610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  GameOverRemainTime: {fileID: 0}
   mySlider: {fileID: 0}
 --- !u!1 &1146920212
 GameObject:
@@ -37953,6 +37956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  GameOverRemainTime: {fileID: 890752077}
   mySlider: {fileID: 0}
 --- !u!114 &1735669189
 MonoBehaviour:
@@ -39996,6 +40000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  GameOverRemainTime: {fileID: 0}
   mySlider: {fileID: 0}
 --- !u!114 &1872980587
 MonoBehaviour:

@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
 {
     public enum InfoType { Exp, Level, Kill, Time, Health }
     public InfoType type;
+    public Text GameOverRemainTime;
 
     Text myText;
     public Slider mySlider;
@@ -48,6 +49,7 @@ public class HUD : MonoBehaviour
                 int min = Mathf.FloorToInt(remainTime / 60);
                 int sec = Mathf.FloorToInt(remainTime % 60);
                 myText.text = string.Format("{0:D2}:{1:D2}", min, sec);
+                GameOverRemainTime.text = string.Format("{0:D2}:{1:D2}", min, sec);
                 break;
             case InfoType.Health:
 

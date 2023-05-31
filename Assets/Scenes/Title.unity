@@ -1701,6 +1701,8 @@ MonoBehaviour:
   MagicStone: 0
   Diamond: 0
   SkillTicket: 0
+  EnterTicket: 0
+  BaseHp: 0
   PlayerSpeed: 1
   DashSpeed: 5
   CharacterCriticalPercent: 0.15
@@ -1712,6 +1714,7 @@ MonoBehaviour:
   MonsterCurrentSpeed: 0
   PoolManagerRef: {fileID: 0}
   PlaySceneManagerRef: {fileID: 0}
+  LobbySceneManagerRef: {fileID: 0}
   ScrollManagerRef: {fileID: 0}
   ImageChangeRef: {fileID: 0}
   CharacterDataManagerRef: {fileID: 0}
@@ -3360,8 +3363,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 616.99994}
-  m_SizeDelta: {x: 1200, y: 700}
+  m_AnchoredPosition: {x: 0, y: 299}
+  m_SizeDelta: {x: 1200, y: 2200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004418556
 MonoBehaviour:
@@ -3383,7 +3386,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcd3e8bf56cee48418a56678cf1339f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01e8471c45389154daeea3aaf3f9ec5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
