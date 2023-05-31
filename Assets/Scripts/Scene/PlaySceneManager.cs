@@ -268,7 +268,7 @@ public class PlaySceneManager : MonoBehaviour
         }
         else if (GameManager.GMInstance.level != 1)
         {
-            SkillSelectPaneltext.text = "축하합니다!\n 레벨 업!";
+            SkillSelectPaneltext.text = "축하 합니다!\n레벨이 상승 했습니다.";
         }
     }
 
@@ -293,9 +293,6 @@ public class PlaySceneManager : MonoBehaviour
 
         GameOverMagicStoneTxt.text = GainMagicStone + " 마정석";
 
-        /** 마정석 저장 */
-        GameManager.GMInstance.CoinManagerRef.JsonSave();
-
         /** 1초 후 */
         yield return new WaitForSeconds(1.0f);
 
@@ -313,6 +310,9 @@ public class PlaySceneManager : MonoBehaviour
 
         /** PlayStop함수 호출 */
         GameManager.GMInstance.PlayStop();
+
+        /** 재화 저장 */
+        GameManager.GMInstance.CoinManagerRef.JsonSave();
     }
 
     /** 게임 클리어 함수 */
