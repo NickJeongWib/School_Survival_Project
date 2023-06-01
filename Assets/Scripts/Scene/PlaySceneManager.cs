@@ -331,11 +331,11 @@ public class PlaySceneManager : MonoBehaviour
 
             GameClearMagicStoneTxt.text = GainMagicStone + " 마정석";
 
-            /** 마정석 저장 */
-            GameManager.GMInstance.CoinManagerRef.JsonSave();
-
             /** 게임 시간 멈춤 */
             Time.timeScale = 0;
+
+            /** 마정석 저장 */
+            GameManager.GMInstance.CoinManagerRef.JsonSave();
         }
     }
 

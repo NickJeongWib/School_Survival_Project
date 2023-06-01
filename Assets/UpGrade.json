@@ -1,0 +1,17 @@
+{
+    "SkillDamageUpSum": 0.0,
+    "SkillDamageUpLevel": 1,
+    "SkillDamageUpPrice": 100,
+    "MaxHpUpSum": 0.0,
+    "MaxHpUpLevel": 1,
+    "MaxHpUpPrice": 100,
+    "SpeedUpSum": 0.0,
+    "SpeedUpLevel": 1,
+    "SpeedUpPrice": 100,
+    "CriticalUpSum": 0.0,
+    "CriticalUpLevel": 1,
+    "CriticalUpPrice": 100,
+    "CriticalDamageUpSum": 0.0,
+    "CriticalDamageUpLevel": 1,
+    "CriticalDamageUpPrice": 100
+}

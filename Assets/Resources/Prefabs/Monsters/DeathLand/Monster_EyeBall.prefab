@@ -298,7 +298,7 @@ MonoBehaviour:
   Potion: {fileID: 3999883156569643222, guid: 9c61402c38e7eaa4ba3eb98743482120, type: 3}
   CurrentMonsterHp: 0
   MonsterMaxHp: 230
-  PotionDropPercent: 1
+  PotionDropPercent: 2
 --- !u!114 &8915779844478252519
 MonoBehaviour:
   m_ObjectHideFlags: 0
