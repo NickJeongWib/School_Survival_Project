@@ -25,8 +25,7 @@
 <a href="https://trello.com/b/BOgUe2oH/teamua%EB%B0%98">팀 프로젝트 일정&회의 자료 Trello<br><br>
   
 # :star:빌드 파일 Exe
-🔥3D 프로젝트이다 보니 용량이 큽니다.<br>
-<a href="https://drive.google.com/file/d/1VKVxA4U2Cs_xwrHhfQldKNFBtEdNHe3R/view?usp=drive_link">쉐도우 오브 타워 exe 빌드 파일 링크<br>
+<a href="https://drive.google.com/file/d/1VKVxA4U2Cs_xwrHhfQldKNFBtEdNHe3R/view?usp=drive_link">어드벤쳐 오브 제노사이드 Apk 빌드 파일 링크<br>
 
 # :star:플레이 영상
 <a href="https://www.youtube.com/watch?v=5ywqxeDWAP8">어드벤처 오브 제노사이드 게임 플레이 영상<br>
