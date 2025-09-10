@@ -24,7 +24,7 @@
   
 # :star:빌드 파일 Apk
 🔥해당 포트폴리오의 빌드 파일은 Unity Ads를 사용하여 exe파일이 없습니다.<br>
-<a href="https://drive.google.com/file/d/1VKVxA4U2Cs_xwrHhfQldKNFBtEdNHe3R/view?usp=drive_link">어드벤쳐 오브 제노사이드 Apk 빌드 파일 링크<br>
+<a href="https://drive.google.com/file/d/1iMqFBrOPhAzCy_86ZxifTcKbEIwXrHBH/view?usp=drive_link">어드벤쳐 오브 제노사이드 Apk 빌드 파일 링크<br>
 
 # :star:플레이 영상
 <a href="https://www.youtube.com/watch?v=5ywqxeDWAP8">어드벤처 오브 제노사이드 게임 플레이 영상<br>
