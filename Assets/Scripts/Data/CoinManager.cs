@@ -22,7 +22,7 @@ public class CoinManager : MonoBehaviour
         GameManager.GMInstance.CoinManagerRef = this;
 
         /** 파일 이름과 경로 저장 */
-        path = Path.Combine(Application.dataPath, "Economy.json");
+        path = Path.Combine(Application.persistentDataPath, "Economy.json");
         /** 데이터 불러오기 */
         JsonLoad();
     }

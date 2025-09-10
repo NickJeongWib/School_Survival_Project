@@ -9,7 +9,7 @@ using static Define;
 public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] public Button _showSkillReSelectAdButton;
-    [SerializeField] string _androidAdUnitId = "Rewarded_Android";
+    [SerializeField] string _androidAdUnitId = "Rewarded_Android_Bidding";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
@@ -21,7 +21,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 #elif UNITY_ANDROID
         _adUnitId = _androidAdUnitId;
 #endif
-
         // Disable the button until the ad is ready to show:
         _showSkillReSelectAdButton.interactable = true;
     }

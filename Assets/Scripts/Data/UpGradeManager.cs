@@ -87,8 +87,6 @@ public class UpGradeManager : MonoBehaviour
         /** path가 존재한다면 */
         else if (File.Exists(UpGradepath))
         {
-            Debug.Log(1);
-
             /** path의 모든 text를 읽음 */
             string loadJson = File.ReadAllText(UpGradepath);
             /** saveEconomy는 loadJson에 저장된 json으로부터 SaveEconomy의 데이터를 불러온다 */
