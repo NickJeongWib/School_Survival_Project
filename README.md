@@ -1,5 +1,5 @@
 # :star:어드벤쳐 오브 제노사이드(Adventure of Genocide)
-<img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/AOG/AOG_Lobby.png"  width="200"/><br>
+<img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/AOG/AOG_Title.png"  width="200"/><br>
 장르 : 2D 뱀서라이크<br>
 그래픽 : 2D<br>
 플랫폼 : 모바일 <br>
@@ -12,19 +12,18 @@
 
 # :star:게임 이미지
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/SOT/SotMainImg.png" width="45%" />
-  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/SOT/ReaperImage.png" width="45%" />
-</p>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/SOT/Stone.png" width="45%" />
-  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/SOT/SotChar.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/AOG/AOG_Lobby.png" width="20%" />
+  <img src="https://github.com/NickJeongWib/Repo_Image/blob/main/AOG/AOG_Upgrade.png" width="20%" />
+  <img src="https://github.com/NickJeongWib/Repo_Image/blob/main/AOG/AOG_Acher_InGame.png" width="20%" />
+  <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/AOG/AOG_Acher_InGame_Up.png" width="20%" />
 </p>
 
 # :star:일정 관리 TODO 리스트
 일정 관리 구현 목표와 회의 자료는 Trello를 사용해서 관리했습니다.<br>
 <a href="https://trello.com/b/BOgUe2oH/teamua%EB%B0%98">팀 프로젝트 일정&회의 자료 Trello<br>
   
-# :star:빌드 파일 Exe
+# :star:빌드 파일 Apk
+🔥해당 포트폴리오의 빌드 파일은 Unity Ads를 사용하여 exe파일이 없습니다.<br>
 <a href="https://drive.google.com/file/d/1VKVxA4U2Cs_xwrHhfQldKNFBtEdNHe3R/view?usp=drive_link">어드벤쳐 오브 제노사이드 Apk 빌드 파일 링크<br>
 
 # :star:플레이 영상
