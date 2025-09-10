@@ -1,10 +1,10 @@
 # :star:어드벤쳐 오브 제노사이드(Adventure of Genocide)
 <img src="https://raw.githubusercontent.com/NickJeongWib/Repo_Image/refs/heads/main/AOG/AOG_Lobby.png"  width="200"/><br>
-장르: 2D 뱀서라이크<br>
-그래픽: 2D<br>
-플랫폼: 모바일 <br>
-유니티 버전: 2021.03.10f1<br>
-개발 기간: 2023.02.01~24.05.30(4개월)<br>
+장르 : 2D 뱀서라이크<br>
+그래픽 : 2D<br>
+플랫폼 : 모바일 <br>
+유니티 버전 : 2021.03.10f1<br>
+개발 기간 : 2023.02.01~24.05.30(4개월)<br>
 팀 프로젝트 인원 : 김진서(그래픽), 정희영(그래픽), 주성빈(기획), 한만진(기획), 정지원(개발)<br>
 
 # :star:개발 기여도 목록<br>
