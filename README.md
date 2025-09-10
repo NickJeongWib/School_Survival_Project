@@ -22,7 +22,7 @@
 
 # :star:일정 관리 TODO 리스트
 일정 관리 구현 목표와 회의 자료는 Trello를 사용해서 관리했습니다.<br>
-<a href="https://trello.com/b/BOgUe2oH/teamua%EB%B0%98">팀 프로젝트 일정&회의 자료 Trello<br><br>
+<a href="https://trello.com/b/BOgUe2oH/teamua%EB%B0%98">팀 프로젝트 일정&회의 자료 Trello<br>
   
 # :star:빌드 파일 Exe
 <a href="https://drive.google.com/file/d/1VKVxA4U2Cs_xwrHhfQldKNFBtEdNHe3R/view?usp=drive_link">어드벤쳐 오브 제노사이드 Apk 빌드 파일 링크<br>
